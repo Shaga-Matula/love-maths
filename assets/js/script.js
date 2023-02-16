@@ -44,11 +44,23 @@
 
     }
 
-
+/**
+ * Gets the operands (the numbers) and the operator (plus, minus etc)
+ * directly from the dom, and returns the correct answer.
+ */
     function calculateCorrectAnswer() {
-
+        let operand1 = parseInt(document.getElementById('operand1').innerText);
+        let operand1 = parseInt(document.getElementById('operand2').innerText);
+        let operator = document.getElementById('operator').innerText;
+        alert(`operand1 is  ${operand1} and the operator is ${operator}`);
+   
+        if (operator === "+") {
+            return [operand1 + operand2, "addition" ];
+        }else{
+            alert(`Unimplamented Operator Type ${operator}`)
+            throw `Unimplamented Operator Type ${operator}.Aborting!`;
+        }
     }
-
 
     function incrementScore() {
 
