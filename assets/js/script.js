@@ -5,7 +5,7 @@
 
             button.addEventListener("click", function () {
                 if (this.getAttribute("data-type") === "submit") {
-                    alert("You clicked submit!");
+                    checkAnswer();
                 } else {
                     let gameType = this.getAttribute("data-type");
                     // alert(`You clicked ${gameType}`);
@@ -39,28 +39,43 @@
         }
 
     }
-
+    /**
+     * Checks the answer agaist the first element in
+     * the returned calculateCorrectAnswer array
+     */
     function checkAnswer() {
+        let userAnswer = parsInt(document.getElementById("answer-box").value);
+        let calculatedAnswer = calculateCorrectAnswer();
+        let isCorrect = userAnswer === calculatedAnswer[0];
 
-    }
-
-/**
- * Gets the operands (the numbers) and the operator (plus, minus etc)
- * directly from the dom, and returns the correct answer.
- */
-    function calculateCorrectAnswer() {
-        let operand1 = parseInt(document.getElementById('operand1').innerText);
-        let operand1 = parseInt(document.getElementById('operand2').innerText);
-        let operator = document.getElementById('operator').innerText;
-        alert(`operand1 is  ${operand1} and the operator is ${operator}`);
-   
-        if (operator === "+") {
-            return [operand1 + operand2, "addition" ];
-        }else{
-            alert(`Unimplamented Operator Type ${operator}`)
-            throw `Unimplamented Operator Type ${operator}.Aborting!`;
+        if (isCorrect) {
+            alert("Hey you got the correct answer :)");
+        }else {
+            alert(`Awwwww! You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`);
         }
+
+        runGame(calculatedAnswer[1]);
+
     }
+
+    /**
+     * Gets the operands (the numbers) and the operator (plus, minus etc)
+     * directly from the dom, and returns the correct answer.
+     */
+    // function calculateCorrectAnswer() {
+    //     let operand1 = parseInt(document.getElementById('operand1').innerText);
+    //     let operand1 = parseInt(document.getElementById('operand2').innerText);
+    //     let operator = document.getElementById('operator').innerText;
+    //     alert(`operand1 is  ${operand1} and the operator is ${operator}`);
+
+    //     if (operator === "+") {
+    //         return [operand1 + operand2, "addition"];
+    //     } else {
+    //         alert(`Unimplamented Operator Type ${operator}`)
+    //         throw `Unimplamented Operator Type ${operator}.Aborting!`;
+    //     }
+
+    // }
 
     function incrementScore() {
 
