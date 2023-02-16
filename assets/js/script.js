@@ -44,14 +44,16 @@
      * the returned calculateCorrectAnswer array
      */
     function checkAnswer() {
-        let userAnswer = parsInt(document.getElementById("answer-box").value);
+        let userAnswer = parseInt(document.getElementById("answer-box").value);
         let calculatedAnswer = calculateCorrectAnswer();
         let isCorrect = userAnswer === calculatedAnswer[0];
 
         if (isCorrect) {
             alert("Hey you got the correct answer :)");
-        }else {
+            incrementScore();
+        } else {
             alert(`Awwwww! You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}.`);
+            incrementWrongAnswer();
         }
 
         runGame(calculatedAnswer[1]);
@@ -62,27 +64,33 @@
      * Gets the operands (the numbers) and the operator (plus, minus etc)
      * directly from the dom, and returns the correct answer.
      */
-    // function calculateCorrectAnswer() {
-    //     let operand1 = parseInt(document.getElementById('operand1').innerText);
-    //     let operand1 = parseInt(document.getElementById('operand2').innerText);
-    //     let operator = document.getElementById('operator').innerText;
-    //     alert(`operand1 is  ${operand1} and the operator is ${operator}`);
+    function calculateCorrectAnswer() {
+        let operand1 = parseInt(document.getElementById('operand1').innerText);
+        let operand2 = parseInt(document.getElementById('operand2').innerText);
+        let operator = document.getElementById("operator").innerText;
+        alert(`operand1 is  ${operand1} and the operator is ${operator}`);
 
-    //     if (operator === "+") {
-    //         return [operand1 + operand2, "addition"];
-    //     } else {
-    //         alert(`Unimplamented Operator Type ${operator}`)
-    //         throw `Unimplamented Operator Type ${operator}.Aborting!`;
-    //     }
-
-    // }
-
-    function incrementScore() {
+        if (operator === "+") {
+            return [operand1 + operand2, "addition"];
+        } else {
+            alert(`Unimplamented Operator Type ${operator}`);
+            throw `Unimplamented Operator Type ${operator}.Aborting!`;
+        }
 
     }
-
+    /**
+     * Gets the current score from the DOM and increments it by 1
+     */
+    function incrementScore() {
+        let oldscore = parseInt(document.getElementById("score").innerText);
+        document.getElementById("score").innerText = ++oldscore;
+    }
+    /**
+     * Gets the current score from the DOM and reduces it by 1
+     */
     function incrementWrongAnswer() {
-
+        let oldscore = parseInt(document.getElementById("incorrect").innerText);
+        document.getElementById("incorrect").innerText = ++oldscore;
     }
 
     function displayAdditionQuestion(operand1, operand2) {
