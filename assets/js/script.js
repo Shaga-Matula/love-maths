@@ -8,8 +8,7 @@
                     checkAnswer();
                 } else {
                     let gameType = this.getAttribute("data-type");
-                    alert(`You clicked ${gameType}`);
-                    runGame(gameType);
+                     runGame(gameType);
                 }
             })
 
@@ -64,8 +63,6 @@
     function checkAnswer() {
         let userAnswer = parseInt(document.getElementById("answer-box").value);
         let calculatedAnswer = calculateCorrectAnswer();
-        let newValue = parseInt(calculatedAnswer.value);
-        calculatedAnswer.value = newValue;
         let isCorrect = userAnswer === calculatedAnswer[0];
 
         if (isCorrect) {
