@@ -49,7 +49,6 @@
         
         } else if (gameType === "division") {
             num2 = Math.floor(Math.random() * 300) + 1;
-            alert(`operand2 level is  ${operand2} `);
             displayDivisionQuestion(num1, num2);
         
         } else {
