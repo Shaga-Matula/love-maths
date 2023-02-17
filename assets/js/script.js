@@ -8,7 +8,7 @@
                     checkAnswer();
                 } else {
                     let gameType = this.getAttribute("data-type");
-                     runGame(gameType);
+                    runGame(gameType);
                 }
             })
 
@@ -45,11 +45,11 @@
 
         } else if (gameType === "subtract") {
             displaySubtractQuestion(num1, num2);
-        
+
         } else if (gameType === "division") {
             num2 = Math.floor(Math.random() * 300) + 1;
             displayDivisionQuestion(num1, num2);
-        
+
         } else {
             alert(`Unknown Game Type ${gameType}`);
             throw `Unknown Game Type ${gameType}.Aborting!`;
@@ -85,7 +85,7 @@
         let operand1 = parseInt(document.getElementById('operand1').innerText);
         let operand2 = parseInt(document.getElementById('operand2').innerText);
         let operator = document.getElementById("operator").innerText;
-       
+
 
         if (operator === "+") {
             return [operand1 + operand2, "addition"];
@@ -94,7 +94,7 @@
         } else if (operator === "-") {
             return [operand1 - operand2, "subtract"];
         } else if (operator === "/") {
-           return ([parseInt(operand1 / operand2), "division"]);
+            return ([parseInt(operand1 / operand2), "division"]);
         } else {
             alert(`Unimplamented Operator Type ${operator}`);
             throw `Unimplamented Operator Type ${operator}.Aborting!`;
