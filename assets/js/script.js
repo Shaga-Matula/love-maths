@@ -97,7 +97,7 @@
         } else if (operator === "-") {
             return [operand1 - operand2, "subtract"];
         } else if (operator === "/") {
-           return [operand1 / operand2, "division"];
+           return ([parseInt(operand1 / operand2), "division"]);
         } else {
             alert(`Unimplamented Operator Type ${operator}`);
             throw `Unimplamented Operator Type ${operator}.Aborting!`;
